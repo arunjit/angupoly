@@ -1,4 +1,4 @@
-angular.module('angupoly', []).
+angular.module('angupoly', ['ng-polymer-elements']).
 run(function(){
   document.getElementById('menubtn').addEventListener('click', function() {
     document.getElementById('drawerpnl').togglePanel();
@@ -15,9 +15,8 @@ controller('Controller', function($log) {
   };
 
   this.search = function() {
-    $log.info('search()');
     if (this.searchText && this.searching) {
-      $log.info('Searching...');
+      $log.info('Searching...', this.searchText);
       return;  // actually do the search
     }
     this.searching = true;

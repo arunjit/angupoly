@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="angupoly">
+<html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,7 @@
   <title>Angular-Polymer</title>
   <script src="components/angular/angular.js"></script>
   <script src="components/platform/platform.js"></script>
+  <script src="components/ng-polymer-elements/ng-polymer-elements.js"></script>
 
   <link rel="import" href="components/core-animated-pages/core-animated-pages.html">
   <link rel="import" href="components/core-drawer-panel/core-drawer-panel.html">
@@ -25,9 +26,12 @@
     <core-toolbar ng-class="{searching:ctrl.searching}">
       <paper-icon-button icon="icons:menu" id="menubtn"></paper-icon-button>
       <h3 ng-if="!ctrl.searching" flex>Angular + Polymer co-op</h3>
-      <paper-input ng-if="ctrl.searching" label="Search" flex ng-model="ctrl.searchText"
-          ap-enter="ctrl.search()" ap-esc="ctrl.cancelSearch()" ng-blur="ctrl.maybeCancelSearch()"
-          ap-focuswhen="{{ctrl.searching==true}}"></paper-input>
+      <div ng-if="ctrl.searching" horizontal center layout flex>
+        <paper-input label="Search" flex ng-model="ctrl.searchText" ng-blur="ctrl.maybeCancelSearch()"
+            ap-enter="ctrl.search()" ap-esc="ctrl.cancelSearch()"
+            ap-focuswhen="{{ctrl.searching==true}}"></paper-input>
+        <paper-icon-button icon="icons:clear" ng-click="ctrl.cancelSearch()"></paper-icon-button>
+      </div>
       <paper-icon-button icon="icons:search" ng-click="ctrl.search()"></paper-icon-button>
       <paper-icon-button icon="icons:arrow-forward" ng-click="ctrl.next()"></paper-icon-button>
     </core-toolbar>
@@ -43,5 +47,10 @@
     </core-drawer-panel>
   </core-header-panel>
   <script src="index.js"></script>
+  <script>
+window.addEventListener('polymer-ready', function() {
+    angular.bootstrap(wrap(document), ['angupoly']);
+});
+  </script>
 </body>
 </html>
