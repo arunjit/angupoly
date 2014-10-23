@@ -22,11 +22,11 @@
 </head>
 <body fullbleed unresolved>
   <core-header-panel ng-controller="Controller as ctrl" fit>
-    <core-toolbar>
+    <core-toolbar ng-class="{searching:ctrl.searching}">
       <paper-icon-button icon="icons:menu" id="menubtn"></paper-icon-button>
       <h3 ng-if="!ctrl.searching" flex>Angular + Polymer co-op</h3>
-      <paper-input ng-if="ctrl.searching" label="Search" flex
-          ap-enter="ctrl.search()" ap-esc="ctrl.cancelSearch()"
+      <paper-input ng-if="ctrl.searching" label="Search" flex ng-model="ctrl.searchText"
+          ap-enter="ctrl.search()" ap-esc="ctrl.cancelSearch()" ng-blur="ctrl.maybeCancelSearch()"
           ap-focuswhen="{{ctrl.searching==true}}"></paper-input>
       <paper-icon-button icon="icons:search" ng-click="ctrl.search()"></paper-icon-button>
       <paper-icon-button icon="icons:arrow-forward" ng-click="ctrl.next()"></paper-icon-button>

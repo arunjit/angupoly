@@ -27,6 +27,10 @@ controller('Controller', function($log) {
     this.searching = false;
     this.searchText = '';
   };
+
+  this.maybeCancelSearch = function() {
+    !this.searchText && this.cancelSearch();
+  };
 }).
 directive('apSelected', function() {
   return function(scope, element, attrs) {

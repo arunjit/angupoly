@@ -2,9 +2,17 @@ body {
   font-family: "Roboto2", "RobotoDraft", sans-serif;
 }
 
+html /deep/ #ink {
+  color: #dd191d;
+}
+
 core-toolbar {
   background-color: #ffc107;
   color: #333;
+  transition: all 0.16s ease-in-out;
+}
+core-toolbar.searching {
+  background-color: #fcfcfc;
 }
 
 #sidebar {
