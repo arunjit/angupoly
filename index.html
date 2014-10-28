@@ -9,6 +9,7 @@
   <script src="components/angular/angular.js"></script>
   <script src="components/platform/platform.js"></script>
   <script src="components/ng-polymer-elements/ng-polymer-elements.js"></script>
+  <script src="components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
   <link rel="import" href="components/core-animated-pages/core-animated-pages.html">
   <link rel="import" href="components/core-drawer-panel/core-drawer-panel.html">
@@ -26,13 +27,7 @@
     <core-toolbar ng-class="{searching:ctrl.searching}">
       <paper-icon-button icon="icons:menu" id="menubtn"></paper-icon-button>
       <h3 ng-if="!ctrl.searching" flex>Angular + Polymer co-op</h3>
-      <div ng-if="ctrl.searching" horizontal center layout flex>
-        <paper-input label="Search" flex ng-model="ctrl.searchText" ng-blur="ctrl.maybeCancelSearch()"
-            ap-enter="ctrl.search()" ap-esc="ctrl.cancelSearch()"
-            ap-focuswhen="{{ctrl.searching==true}}"></paper-input>
-        <paper-icon-button icon="icons:clear" ng-click="ctrl.cancelSearch()"></paper-icon-button>
-      </div>
-      <paper-icon-button icon="icons:search" ng-click="ctrl.search()"></paper-icon-button>
+      <ap-search searching="ctrl.searching" search-text="ctrl.searchText"></ap-search>
       <paper-icon-button icon="icons:arrow-forward" ng-click="ctrl.next()"></paper-icon-button>
     </core-toolbar>
     <core-drawer-panel id="drawerpnl" fit responsiveWidth="5000px">
@@ -47,6 +42,7 @@
     </core-drawer-panel>
   </core-header-panel>
   <script src="index.js"></script>
+  <script src="search.js"></script>
   <script>
 window.addEventListener('polymer-ready', function() {
     angular.bootstrap(wrap(document), ['angupoly']);

@@ -1,4 +1,4 @@
-angular.module('angupoly', ['ng-polymer-elements']).
+angular.module('angupoly', ['ng-polymer-elements', 'ui.router']).
 run(function(){
   document.getElementById('menubtn').addEventListener('click', function() {
     document.getElementById('drawerpnl').togglePanel();
@@ -14,21 +14,8 @@ controller('Controller', function($log) {
     $log.info(this.selected);
   };
 
-  this.search = function() {
-    if (this.searchText && this.searching) {
-      $log.info('Searching...', this.searchText);
-      return;  // actually do the search
-    }
-    this.searching = true;
-  };
-
-  this.cancelSearch = function() {
-    this.searching = false;
-    this.searchText = '';
-  };
-
-  this.maybeCancelSearch = function() {
-    !this.searchText && this.cancelSearch();
+  this.onSearch = function() {
+    $log.info('Searching...', this.searchText);
   };
 }).
 directive('apSelected', function() {

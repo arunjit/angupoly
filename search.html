@@ -1,0 +1,9 @@
+<div horizontal center layout ng-attr-flex="{{searching?'':undefined}}">
+  <div ng-if="searching" horizontal center layout flex>
+    <paper-input label="Search" flex ng-model="searchText" ng-blur="maybeCancelSearch()"
+        ap-enter="search()" ap-esc="cancelSearch()"
+        ap-focuswhen="{{searching==true}}"></paper-input>
+    <paper-icon-button icon="icons:clear" ng-click="cancelSearch()"></paper-icon-button>
+  </div>
+  <paper-icon-button icon="icons:search" ng-click="search()"></paper-icon-button>
+</div>
