@@ -27,7 +27,7 @@
     <core-toolbar ng-class="{searching:ctrl.searching}">
       <paper-icon-button icon="icons:menu" id="menubtn"></paper-icon-button>
       <h3 ng-if="!ctrl.searching" flex>Angular + Polymer co-op</h3>
-      <ap-search searching="ctrl.searching" search-text="ctrl.searchText"></ap-search>
+      <ap-search id="search" searching="ctrl.searching" searchText="ctrl.searchText" onSearch="ctrl.onSearch()"></ap-search>
       <paper-icon-button icon="icons:arrow-forward" ng-click="ctrl.next()"></paper-icon-button>
     </core-toolbar>
     <core-drawer-panel id="drawerpnl" fit responsiveWidth="5000px">
